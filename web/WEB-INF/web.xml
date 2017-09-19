@@ -12,4 +12,14 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
+
+    <!--<servlet>-->
+        <!--<servlet-name>ContactoServlet</servlet-name>-->
+        <!--<servlet-class>ContactoServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>ContactoServlet</servlet-name>-->
+        <!--<url-pattern>/contacto</url-pattern>-->
+    <!--</servlet-mapping>-->
+
 </web-app>
