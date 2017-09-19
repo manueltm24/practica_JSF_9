@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+   <title>Practica 9</title>
+</h:head>
+<h:body>
+   <p:panelGrid id="panelGrid">
+      <p:commandButton title="Nuevo contacto" value="Nuevo contacto" style="width: 100%" onclick="PF('dialogo_contacto').show()"></p:commandButton>
+      <p:dataTable var="contacto" value="#{contactoManagedBean.contactoList}">
+         <p:column headerText="Nombre">
+            <h:outputText value="#{contacto.nombre}"/>
+         </p:column>
+
+         <p:column headerText="Apellido">
+            <h:outputText value="#{contacto.apellido}"/>
+         </p:column>
+
+         <p:column headerText="Direccion">
+            <h:outputText value="#{contacto.direccion}"/>
+         </p:column>
+
+         <p:column headerText="Telefono">
+            <h:outputText value="#{contacto.telefono}"/>
+         </p:column>
+
+         <p:column headerText="Correo">
+            <h:outputText value="#{contacto.correo}"/>
+         </p:column>
+
+         <p:column headerText="Accion">
+            <p:commandButton update="" oncomplete="PF('dialogo_contacto').show()" icon="ui-icon-search" title="View">
+               <f:setPropertyActionListener value="#{contacto}" target="#{contactoManagedBean.contactoSeleccionado}" />
+            </p:commandButton>
+         </p:column>
+      </p:dataTable>
+   </p:panelGrid>
+
+   <p:dialog header="Nuevo contacto" widgetVar="dialogo_contacto" id="dialogo_contacto" modal="true" height="100%">
+      <p:panelGrid id="panelg" style="width: 100%;">
+         <form action="/index.xhtml" method="post">
+            <p:row>
+               <p:column colspan="2">
+                  <p:outputLabel>Nombre:</p:outputLabel>
+                  <p:inputText id="nombre"></p:inputText>
+               </p:column>
+            </p:row>
+
+            <p:row>
+               <p:column colspan="2">
+                  <p:outputLabel>Apellido: </p:outputLabel>
+                  <p:inputText id="apellido"></p:inputText>
+               </p:column>
+            </p:row>
+
+            <p:row>
+               <p:column colspan="2">
+                  <p:outputLabel>Direccion: </p:outputLabel>
+                  <p:inputText id="direccion"></p:inputText>
+               </p:column>
+            </p:row>
+
+            <p:row>
+               <p:column colspan="2">
+                  <p:outputLabel>Telefono: </p:outputLabel>
+                  <p:inputMask mask="(999)999-9999" id="telefono"/>
+               </p:column>
+            </p:row>
+
+            <p:row>
+               <p:column colspan="2">
+                  <p:outputLabel>Correo: </p:outputLabel>
+                  <p:inputText id="correo"></p:inputText>
+               </p:column>
+            </p:row>
+
+            <p:row>
+               <p:column>
+                  <p:button title="Registrar" type="submit" value="Registrar"></p:button>
+                  <p:button title="Cancelar" type="button" value="Cancelar" onclick="PF('dialogo_contacto').hide();"></p:button>
+                  <p:button title="Actualizar" type="button" value="Actualizar"  onclick=""></p:button>
+                  <p:button title="Borrar" type="button" value="Cancelar"  onclick=""></p:button>
+               </p:column>
+            </p:row>
+         </form>
+      </p:panelGrid>
+   </p:dialog>
+</h:body>
+</html>
