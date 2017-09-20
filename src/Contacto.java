@@ -1,31 +1,29 @@
-package entidad;
-
-import java.io.Serializable;
-
-public class Contacto implements Serializable{
-    private Long id;
+/**
+ * Created by manueltm24 on 9/20/2017.
+ */
+public class Contacto {
     private String nombre;
     private String apellido;
     private String direccion;
     private String telefono;
     private String correo;
+    private Integer id;
 
-    public Contacto() {
+    private static int ultimoId = 0;
+
+    public static int getultimoId() {
+        return ultimoId;
     }
 
-    public Contacto(String nombre, String apellido, String direccion, String telefono, String correo) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.correo = correo;
+    public static void setultimoId(int lastId) {
+        Contacto.ultimoId = lastId;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -68,6 +66,4 @@ public class Contacto implements Serializable{
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
-
 }

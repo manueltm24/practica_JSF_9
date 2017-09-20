@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile"
+>
+
+<h:head>
+    <title>Practica 8</title>
+    <h:outputStylesheet library="primefaces" />
+</h:head>
+<h:body>
+    <h1>Contactos</h1>
+    <p:button outcome="contacto_rapido" value="Nuevo..."  />
+
+    <h:form id="form">
+    <div class="ui-g">
+
+        <div class="ui-g-8">
+            <p:dataTable id="tablaContactos" var="contacto" value="#{contactoBean.contactos}" scrollable="true" scrollHeight="278">
+                <p:column headerText="ID" footerText="ID">
+                    <h:outputText value="#{contacto.id}" />
+                </p:column>
+
+                <p:column headerText="Nombre" footerText="Nombre">
+                    <h:outputText value="#{contacto.nombre}" />
+                </p:column>
+
+                <p:column headerText="Apellido" footerText="Apellido">
+                    <h:outputText value="#{contacto.apellido}" />
+                </p:column>
+
+                <p:column style="width:32px;text-align: center">
+                    <p:commandButton action="#{contactoBean.cargarContacto(contacto)}" update=":form:formEditar"  icon="ui-icon-search" title="View"/>
+                </p:column>
+            </p:dataTable>
+        </div>
+        <div class="ui-g-4">
+            <p:panel id="formEditar" header="Detalles"  style="margin-bottom:20px">
+
+                    <div class="ui-g">
+                        <div class="ui-g-4">Nombre</div>
+                        <div class="ui-g-8">
+                            <p:inputText id="nombre" value="#{contactoBean.nombre}" />
+                            <h:message style="color: red" for="nombre"/><br/>
+                        </div>
+
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-g-4">Apellido</div>
+                        <div class="ui-g-8">
+                            <p:inputText id="apellido" value="#{contactoBean.apellido}"/>
+                            <h:message style="color: red" for="apellido"/><br/>
+                        </div>
+
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-g-4">Telefono</div>
+                        <div class="ui-g-8">
+                            <p:inputMask id="telefono"  value="#{contactoBean.telefono}" mask="(999)999-9999"/>
+                            <h:message style="color: red" for="telefono"/><br/>
+                        </div>
+
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-g-4">Direccion</div>
+                        <div class="ui-g-8">
+                            <p:inputText id="direccion"  value="#{contactoBean.direccion}"/>
+                            <h:message style="color: red" for="direccion"/><br/>
+                        </div>
+
+                    </div>
+                    <div class="ui-g">
+                        <div class="ui-g-4">Correo</div>
+                        <div class="ui-g-8">
+                            <p:inputText id="correo" value="#{contactoBean.correo}"/>
+                            <h:message style="color: red" for="correo"/><br/>
+                        </div>
+
+                    </div>
+                    <p:commandButton value="Actualizar" update=":form:tablaContactos"  actionListener="#{contactoBean.actualizarContacto}" styleClass="ui-priority-primary" />
+                    <p:commandButton value="Borrar" update=":form:tablaContactos :form:formEditar"  actionListener="#{contactoBean.borrarContacto}" styleClass="ui-priority-primary" />
+
+
+            </p:panel>
+        </div>
+    </div>
+
+
+    </h:form>
+</h:body>
+</html>

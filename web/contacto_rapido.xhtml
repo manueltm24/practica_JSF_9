@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pm="http://primefaces.org/mobile"
+>
+
+<h:head>
+    <title>Practica 9</title>
+    <h:outputStylesheet name="grid/grid.css" library="primefaces" />
+</h:head>
+<h:body>
+    <div class="ui-g-4">
+        <p:panel  header="Nuevo contacto"  style="margin-bottom:20px">
+            <h:form>
+            <div class="ui-g">
+                <div class="ui-g-4">Nombre</div>
+                <div class="ui-g-8">
+                    <p:inputText id="nombreInsert" value="#{contactoRapidoBean.nombre}" required="true" requiredMessage="Este campo es requerido!" />
+                    <br/>
+                    <h:message style="color: red" for="nombreInsert"/><br/>
+                </div>
+
+            </div>
+            <div class="ui-g">
+                <div class="ui-g-4">Apellido</div>
+                <div class="ui-g-8">
+                    <p:inputText id="apellidoInsert" value="#{contactoRapidoBean.apellido}" required="true" requiredMessage="Este campo es requerido!"/>
+                    <br/>
+                    <h:message style="color: red" value="Requerido" for="apellidoInsert"/><br/>
+                </div>
+
+            </div>
+
+            <h:commandButton value="Insertar"  actionListener="#{contactoRapidoBean.insertarConctacto}" action="vista_contactos" styleClass="ui-priority-primary" />
+
+            </h:form>
+
+        </p:panel>
+    </div>
+
+
+</h:body>
+</html>
